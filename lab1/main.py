@@ -1,6 +1,7 @@
 import sys
 import math
 
+
 def get_coef(index, prompt):
     '''
     Читаем коэффициент из командной строки или вводим с клавиатуры
@@ -20,7 +21,7 @@ def get_coef(index, prompt):
             print(prompt)
             coef_str = input()
             for sym in coef_str:
-                if sym.isdigit() or sym =='-':
+                if sym.isdigit() or sym == '-':
                     break
             else:
                 continue
@@ -41,9 +42,9 @@ def get_roots(a, b, c):
         list[float]: Список корней
     '''
     result = set()
-    D = b*b - 4*a*c
+    D = b * b - 4 * a * c
     if D == 0.0:
-        root = -b / (2.0*a)
+        root = -b / (2.0 * a)
         if root > 0:
             result.add(math.sqrt(root))
             result.add(-math.sqrt(root))
@@ -53,20 +54,31 @@ def get_roots(a, b, c):
 
     elif D > 0.0:
         sqD = math.sqrt(D)
-        rootSq1 = (-b + sqD) / (2.0*a)
-        rootSq2 = (-b - sqD) / (2.0*a)
+        rootSq1 = (-b + sqD) / (2.0 * a)
+        rootSq2 = (-b - sqD) / (2.0 * a)
 
-        root1 = math.sqrt(rootSq1)
-        root2 = -math.sqrt(rootSq1)
+        if rootSq1 > 0:
+            root1 = math.sqrt(rootSq1)
+            root2 = -math.sqrt(rootSq1)
+        elif rootSq1 == 0:
+            root1 = abs(math.sqrt(rootSq1))
 
-        root3 = math.sqrt(rootSq2)
-        root4 = -math.sqrt(rootSq2)
+        if rootSq2 > 0:
+            root3 = math.sqrt(rootSq2)
+            root4 = -math.sqrt(rootSq2)
+        elif rootSq2 == 0:
+            root3 = abs(math.sqrt(rootSq2))
 
         result.add(root1)
-        result.add(root2)
+        try:
+            result.add(root2)
+        except:
+            pass
         result.add(root3)
-        result.add(root4)
-
+        try:
+            result.add(root4)
+        except:
+            pass
 
     return list(result)
 
@@ -81,7 +93,7 @@ def main():
     b = get_coef(2, 'Введите коэффициент B:')
     c = get_coef(3, 'Введите коэффициент C:')
     # Вычисление корней
-    roots = get_roots(a,b,c)
+    roots = get_roots(a, b, c)
     # Вывод корней
     len_roots = len(roots)
     if len_roots == 0:
@@ -94,7 +106,6 @@ def main():
         print('Три корня: {}, {} и {}'.format(roots[0], roots[1], roots[2]))
     else:
         print('Четыре корня: {}, {}, {} и {}'.format(roots[0], roots[1], roots[2], roots[3]))
-
 
 
 # Если сценарий запущен из командной строки
