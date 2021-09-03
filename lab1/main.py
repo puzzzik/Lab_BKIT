@@ -1,16 +1,11 @@
+# -*- coding: utf-8 -*-
+
 import sys
 import math
 
 
 def get_coef(index, prompt):
-    '''
-    Читаем коэффициент из командной строки или вводим с клавиатуры
-    Args:
-        index (int): Номер параметра в командной строке
-        prompt (str): Приглашение для ввода коэффицента
-    Returns:
-        float: Коэффициент квадратного уравнения
-    '''
+
     try:
         # Пробуем прочитать коэффициент из командной строки
         coef_str = sys.argv[index]
@@ -32,7 +27,7 @@ def get_coef(index, prompt):
 
 
 def get_roots(a, b, c):
-    '''
+    """
     Вычисление корней квадратного уравнения
     Args:
         a (float): коэффициент А
@@ -40,7 +35,7 @@ def get_roots(a, b, c):
         c (float): коэффициент C
     Returns:
         list[float]: Список корней
-    '''
+    """
     result = set()
     D = b * b - 4 * a * c
     if D == 0.0:
@@ -84,9 +79,9 @@ def get_roots(a, b, c):
 
 
 def main():
-    '''
+    """
     Основная функция
-    '''
+    """
     a = get_coef(1, 'Введите коэффициент А:')
     while a == 0:
         a = get_coef(1, 'Введите коэффициент А:')
