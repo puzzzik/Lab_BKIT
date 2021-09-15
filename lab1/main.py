@@ -76,7 +76,10 @@ def get_roots(a, b, c):
             result.add(root2)
         except:
             pass
-        result.add(root3)
+        try:
+            result.add(root3)
+        except:
+            pass
         try:
             result.add(root4)
         except:
