@@ -14,21 +14,18 @@ def get_coef(index, prompt):
             float: Коэффициент квадратного уравнения
         """
     try:
-        # Пробуем прочитать коэффициент из командной строки
         coef_str = sys.argv[index]
+        if sys.argv[1] == '0' or sys.argv[2] == '0':
+            int('a')
         float(coef_str)
     except:
-        # Вводим с клавиатуры
-        while True:
+        flag = True
+        while flag:
             print(prompt)
-            coef_str = input()
-            for sym in coef_str:
-                if sym.isdigit() or sym == '-':
-                    break
-            else:
-                continue
-            break
-    # Переводим строку в действительное число
+            coef_str = str(input())
+            if coef_str.isdigit() or (coef_str[0] == '-' and coef_str[1:].isdigit()):
+                 flag = False
+
     coef = float(coef_str)
     return coef
 
@@ -71,7 +68,10 @@ def get_roots(a, b, c):
         elif rootSq2 == 0:
             root3 = abs(math.sqrt(rootSq2))
 
-        result.add(root1)
+        try:
+            result.add(root1)
+        except:
+            pass
         try:
             result.add(root2)
         except:
@@ -92,6 +92,7 @@ def main():
     """
     Основная функция
     """
+    
     a = get_coef(1, 'Введите коэффициент А:')
     while a == 0:
         a = get_coef(1, 'Введите коэффициент А:')
