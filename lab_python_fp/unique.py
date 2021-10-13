@@ -10,6 +10,15 @@ class Unique(object):
 
         ignore_case = kwargs.get('ignore_case', False)
         data = []
+        for item in items:
+            if isinstance(item, str) and not ignore_case:
+                data1 = list(map(lambda x: x.lower(), data))
+                if item.lower() not in data1:
+                    data.append(item)
+            elif item not in data:
+                data.append(item)
+        self.data = data
+        return data
 
 
 
@@ -19,5 +28,3 @@ class Unique(object):
 
     def __iter__(self):
         return self
-
-

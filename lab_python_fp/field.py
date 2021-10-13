@@ -10,14 +10,16 @@ def field(items, *args):
                 print(item[args[0]])
         else:
             d = {arg : item[arg] for arg in args if item.get(arg) and item[arg] is not None}
-            print(d)
+            if len(d) != 0:
+                print(d)
 
 
 
 goods = [
     {'title': 'Ковер', 'price': 2000, 'color': 'green'},
     {'title': 'Диван для отдыха', 'price': 5300, 'color': 'black'},
-    {'price': 2000}
+    {'price': 2000},
+    {'color': 'black'}
 ]
 field(goods, 'title')  # 'Ковер', 'Диван для отдыха'
 field(goods, 'title', 'price')  # {'title': 'Ковер', 'price': 2000}, {'title': 'Диван для отдыха', 'price': 5300}
