@@ -1,7 +1,10 @@
+# -*- coding: utf-8 -*-
+
+
 import time
 from contextlib import contextmanager
 
-class cm_timer1:
+class cm_timer_1:
     def __init__(self):
         # self.startTime = time.localtime()
         pass
@@ -18,9 +21,8 @@ class cm_timer1:
             self.endTime = time.time()
             print(self.endTime - self.startTime)
 
-with cm_timer1():
-    time.sleep(2)
-
+# with cm_timer_1():
+#     time.sleep(2)
 
 @contextmanager
 def cm_timer2():
@@ -29,5 +31,5 @@ def cm_timer2():
     endTime = time.time()
     print(endTime - startTime)
 
-with cm_timer2():
-    time.sleep(2)
+# with cm_timer2():
+#     time.sleep(2)

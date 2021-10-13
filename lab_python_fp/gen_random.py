@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import random
 
 
@@ -7,8 +9,8 @@ import random
 # Hint: типовая реализация занимает 2 строки
 def gen_random(num_count, begin, end):
     # Необходимо реализовать генератор
-    a = list(random.randint(begin, end) for _ in range(num_count))
-    return a
+    #a = list(random.randint(begin, end) for _ in range(num_count))
+    for i in range(num_count):
+        yield random.randint(begin, end)
 
-
-print(gen_random(5, 1, 3))
+    # print(gen_random(5, 1, 3))
