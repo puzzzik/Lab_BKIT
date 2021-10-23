@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # используется для сортировки
 from operator import itemgetter
 from ds import Cd
