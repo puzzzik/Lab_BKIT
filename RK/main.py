@@ -70,12 +70,12 @@ def main():
                     for lib_name, lib_id, cd_id in many_to_many_temp
                     for c in cdc if c.id == cd_id]
 
-    print('Задание А1')
+    print('Задание Д1')
     res_11 = [(cd[1], cd[3]) for cd in one_to_many if cd[1][-1] == 'a' or cd[1][-1] == 'а']
     for i in res_11:
         print(*i, sep=' --- ')
 
-    print('\nЗадание А2')
+    print('\nЗадание Д2')
     res_12_unsorted = []
     # Перебираем все библиотеки
     for l in libs:
@@ -94,7 +94,7 @@ def main():
     for i in res_12:
         print(*i, sep=' --- ')
 
-    print('\nЗадание А3')
+    print('\nЗадание Д3')
     res_13 = {}
     # Перебираем все библиотеки
     for l in libs:
