@@ -1,28 +1,29 @@
-class Emp:
-    """Сотрудник"""
+class Cd:
+    """CD-диск"""
 
-    def __init__(self, id, fio, sal, dep_id):
+    def __init__(self, id, song, author, price, lib_id):
         self.id = id
-        self.fio = fio
-        self.sal = sal
-        self.dep_id = dep_id
+        self.song = song
+        self.author = author
+        self.price = price
+        self.lib_id = lib_id
 
 
-class Dep:
-    """Отдел"""
+class Lib:
+    """Библиотека"""
 
     def __init__(self, id, name):
         self.id = id
         self.name = name
 
 
-class EmpDep:
+class LibCd:
     """
-    'Сотрудники отдела' для реализации
+    'Диск из библиотеки' для реализации
     связи многие-ко-многим
     """
 
-    def __init__(self, dep_id, emp_id):
-        self.dep_id = dep_id
-        self.emp_id = emp_id
+    def __init__(self, cd_id, lib_id):
+        self.cd_id = cd_id
+        self.lib_id = lib_id
 
