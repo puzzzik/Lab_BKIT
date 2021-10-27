@@ -15,7 +15,7 @@ def get_coef(index, prompt):
         """
     try:
         coef_str = sys.argv[index]
-        if sys.argv[1] == '0' or sys.argv[2] == '0':
+        if sys.argv[1] == '0':
             int('bn')
         float(coef_str)
     except:
