@@ -78,7 +78,8 @@ class EquationSolver:
             result.add(root3)
             result.add(root4)
 
-            self._result = list(filter(lambda x: x is not None, result))
+        self._result = list(filter(lambda x: x is not None, result))
+        return self._result
 
     def printResult(self):
         if len(self._result) == 0:
