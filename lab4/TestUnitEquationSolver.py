@@ -25,6 +25,11 @@ class TestEquation(unittest.TestCase):
         self.solver.get_roots()
         self.assertEqual(sorted(self.solver.result), sorted([1, -1, math.sqrt(5), -math.sqrt(5)]))
 
+    def test_result4(self):
+        self.solver.ratio = [1, 1, -1]
+        self.solver.get_roots()
+        self.assertEqual(sorted(self.solver.result), sorted([-0.5 * math.sqrt(-2 + 2 * math.sqrt(5)), 0.5 * math.sqrt(-2 + 2 * math.sqrt(5))]))
+
     def test_result3(self):
         self.solver.ratio = [1, 14, 48]
         self.solver.get_roots()

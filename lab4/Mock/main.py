@@ -9,6 +9,9 @@ class EquationSolver:
         self._result = []
         self._ratio = [0, 0, 0]
 
+    def getResult(self):
+        return self._result
+
     @property
     def ratio(self):
         return self._ratio
@@ -22,11 +25,12 @@ class EquationSolver:
         return self._result
 
     def input_ratio(self):
-        self.ratio[0] = self._addcoef(0, 'Введите коэффициент А:')
-        while self._ratio[0] == 0:
-            self.ratio[0] = self._addcoef(0, 'Введите коэффициент А:')
-        self.ratio[1] = self._addcoef(1, 'Введите коэффициент B:')
-        self.ratio[2] = self._addcoef(2, 'Введите коэффициент C:')
+        a = self._addcoef(0, 'Введите коэффициент А:')
+        while a == 0:
+            a = self._addcoef(0, 'Введите коэффициент А:')
+        b = self._addcoef(1, 'Введите коэффициент B:')
+        c = self._addcoef(2, 'Введите коэффициент C:')
+        self.ratio = [a, b, c]
 
     def _addcoef(self, index, prompt):
         try:
@@ -91,7 +95,8 @@ class EquationSolver:
         elif len(self._result) == 3:
             print("Три корня: {}, {} и {}".format(self._result[0], self._result[1], self._result[2]))
         else:
-            print("Четыре корня: {}, {}, {} и {}". format(self._result[0], self._result[1], self._result[2], self._result[3]))
+            print("Четыре корня: {}, {}, {} и {}".format(self._result[0], self._result[1], self._result[2],
+                                                         self._result[3]))
 
 
 def main():
