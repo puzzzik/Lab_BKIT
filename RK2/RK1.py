@@ -2,6 +2,8 @@
 # используется для сортировки
 from operator import itemgetter
 
+from ds import cdc, libs, libs_cdc
+
 
 class RK1:
     def __init__(self, cdc, libs, libs_cdc):
@@ -9,19 +11,19 @@ class RK1:
         self.libs = libs
         self.libs_cdc = libs_cdc
         self.one_to_many = [(c.song, c.author, c.price, l.name)
-                       for l in libs
-                       for c in cdc
-                       if c.lib_id == l.id]
+                            for l in libs
+                            for c in cdc
+                            if c.lib_id == l.id]
 
         # Соединение данных многие-ко-многим
         self.many_to_many_temp = [(l.name, lc.lib_id, lc.cd_id)
-                             for l in libs
-                             for lc in libs_cdc
-                             if l.id == lc.lib_id]
+                                  for l in libs
+                                  for lc in libs_cdc
+                                  if l.id == lc.lib_id]
 
         self.many_to_many = [(c.song, c.author, c.price, lib_name)
-                        for lib_name, lib_id, cd_id in self.many_to_many_temp
-                        for c in cdc if c.id == cd_id]
+                             for lib_name, lib_id, cd_id in self.many_to_many_temp
+                             for c in cdc if c.id == cd_id]
 
     def N1(self):
         print('Задание Д1')
@@ -70,3 +72,10 @@ class RK1:
             for v in value:
                 print('\t', v)
         return res_13
+
+
+if __name__ == '__main__':
+    rk = RK1(cdc, libs, libs_cdc)
+    rk.N1()
+    rk.N2()
+    rk.N3()
