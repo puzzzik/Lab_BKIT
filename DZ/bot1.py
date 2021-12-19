@@ -30,7 +30,7 @@ def echo_all(message):
         img = open(os.path.join(cur_path, 'img', 'img3.jpg'), 'rb')
         bot.send_photo(message.from_user.id, img)
     else:
-        markup = types.ReplyKeyboardMarkup(row_width=3)
+        markup = types.ReplyKeyboardMarkup()
         itembtn3 = types.KeyboardButton(mes_Sashka)
         itembtn1 = types.KeyboardButton(mes_hi)
         itembtn2 = types.KeyboardButton(mes_whatsup)
