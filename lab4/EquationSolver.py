@@ -22,11 +22,11 @@ class EquationSolver:
         return self._result
 
     def input_ratio(self):
-        self.ratio[0] = self._addcoef(0, 'Введите коэффициент А:')
+        self._addcoef(0, 'Введите коэффициент А:')
         while self._ratio[0] == 0:
-            self.ratio[0] = self._addcoef(0, 'Введите коэффициент А:')
-        self.ratio[1] = self._addcoef(1, 'Введите коэффициент B:')
-        self.ratio[2] = self._addcoef(2, 'Введите коэффициент C:')
+            self._addcoef(0, 'Введите коэффициент А:')
+        self._addcoef(1, 'Введите коэффициент B:')
+        self._addcoef(2, 'Введите коэффициент C:')
 
     def _addcoef(self, index, prompt):
         try:
@@ -42,7 +42,7 @@ class EquationSolver:
                 if coef_str.isdigit() or (coef_str[0] == '-' and coef_str[1:].isdigit()):
                     flag = False
 
-        return float(coef_str)
+        self._ratio[index] = float(coef_str)
 
     def get_roots(self):
         result = set()

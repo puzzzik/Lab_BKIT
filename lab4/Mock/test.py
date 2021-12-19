@@ -1,5 +1,6 @@
 from unittest import TestCase
 from unittest.mock import patch, Mock
+import time
 from math import sqrt
 from main import EquationSolver
 
@@ -18,3 +19,5 @@ class TestSolver(TestCase):
         self.assertEqual(sorted(solver.getResult(self=solver)), [-2, 2])
 
 
+if __name__ == '__main__':
+    TestSolver.test_solver()

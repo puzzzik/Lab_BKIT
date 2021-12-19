@@ -2,6 +2,7 @@
 
 import sys
 import math
+import time
 
 
 class EquationSolver:
@@ -25,6 +26,7 @@ class EquationSolver:
         return self._result
 
     def input_ratio(self):
+        time.sleep(10)
         a = self._addcoef(0, 'Введите коэффициент А:')
         while a == 0:
             a = self._addcoef(0, 'Введите коэффициент А:')
