@@ -6,7 +6,6 @@ TOKEN = '5017968274:AAFrEuyYMWEqUxpK6M59BDpbj_RE-wMoFsc'
 # Сообщения
 mes_hi = 'привет'
 mes_whatsup = 'как дела?'
-mes_Sashka = 'Я Санька'
 
 # Путь к текущему каталогу
 cur_path = os.path.dirname(os.path.abspath(__file__))
@@ -23,18 +22,12 @@ def echo_all(message):
     elif text == mes_whatsup:
         img = open(os.path.join(cur_path, 'img', 'pic.jpg'), 'rb')
         bot.send_photo(message.from_user.id, img)
-    elif text == mes_Sashka:
-        img = open(os.path.join(cur_path, 'img', 'img1.jpg'), 'rb')
-        bot.send_photo(message.from_user.id, img)
-        bot.send_message(chat_id, 'Я тебя люблю!')
-        img = open(os.path.join(cur_path, 'img', 'img3.jpg'), 'rb')
-        bot.send_photo(message.from_user.id, img)
+
     else:
         markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
-        itembtn3 = types.KeyboardButton(mes_Sashka)
         itembtn1 = types.KeyboardButton(mes_hi)
         itembtn2 = types.KeyboardButton(mes_whatsup)
-        markup.add(itembtn1, itembtn2, itembtn3)
+        markup.add(itembtn1, itembtn2)
         bot.send_message(chat_id, 'Пожалуйста, нажмите кнопку', reply_markup=markup)
 
 
