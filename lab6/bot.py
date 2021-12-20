@@ -35,8 +35,6 @@ def entering_city(message):
     item = types.KeyboardButton('Показать погоду')
     markup.add(item)
     bot.send_message(message.chat.id, 'Нажмите, пожалуйста, на кнопку', reply_markup=markup)
-    markup = types.ReplyKeyboardRemove(selective=False)
-    bot.send_message(message.chat.id, '', reply_markup=markup)
 
 
 @bot.message_handler(func=lambda message: dbworker.get(message.chat.id) == config.States.STATE_SEND_WEATHER.value)
