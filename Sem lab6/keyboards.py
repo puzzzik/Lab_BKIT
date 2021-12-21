@@ -12,7 +12,6 @@ data = [
     "умереть.",
     "нет, умереть."
 ]
-
 start = ReplyKeyboardMarkup(row_width=1, one_time_keyboard=False, resize_keyboard=True)
 text = 'Я родився'
 start.add(KeyboardButton(text=text))
