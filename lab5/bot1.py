@@ -1,6 +1,6 @@
 import os
-import telebot
-from telebot import types
+import logging
+from aiogram import Bot, Dispatcher, executor, types
 
 TOKEN = '5017968274:AAFrEuyYMWEqUxpK6M59BDpbj_RE-wMoFsc'
 # Сообщения
@@ -10,25 +10,27 @@ mes_whatsup = 'как дела?'
 # Путь к текущему каталогу
 cur_path = os.path.dirname(os.path.abspath(__file__))
 
-# Создание бота
-bot = telebot.TeleBot(TOKEN)
+bot = Bot(token=TOKEN)
+# Диспетчер для бота
+dp = Dispatcher(bot)
+# Включаем логирование, чтобы не пропустить важные сообщения
+logging.basicConfig(level=logging.INFO)
 
-@bot.message_handler(func=lambda message: True)
-def echo_all(message):
-    chat_id = message.chat.id
-    text = message.text
-    if text == mes_hi:
-        bot.send_message(chat_id, 'Привет ✌️')
-    elif text == mes_whatsup:
+
+@dp.message_handler(content_types='text')
+async def echo_all(message: types.Message):
+    if message.text == mes_hi:
+        await message.answer('Привет ✌️')
+    elif message.text == mes_whatsup:
         img = open(os.path.join(cur_path, 'img', 'pic.jpg'), 'rb')
-        bot.send_photo(message.from_user.id, img)
-
+        await bot.send_photo(message.chat.id, img)
     else:
         markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
         itembtn1 = types.KeyboardButton(mes_hi)
         itembtn2 = types.KeyboardButton(mes_whatsup)
         markup.add(itembtn1, itembtn2)
-        bot.send_message(chat_id, 'Пожалуйста, нажмите кнопку', reply_markup=markup)
+        await message.answer('Пожалуйста, нажмите кнопку', reply_markup=markup)
 
 
-bot.infinity_polling()
+if __name__ == '__main__':
+    executor.start_polling(dp, skip_updates=True)
