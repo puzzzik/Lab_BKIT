@@ -1,10 +1,12 @@
+# -*- coding: utf-8 -*-
+
 import config
 import telebot
 import dbworker
 from weather import Weather
 from telebot import types
 
-bot = telebot.TeleBot(token=config.TOKEN)
+bot = telebot.TeleBot(config.TOKEN)
 w = Weather()
 
 

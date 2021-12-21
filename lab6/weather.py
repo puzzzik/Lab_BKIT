@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import requests
 app_id = "0d6eb8362cfe0622d5bc1b40279fb037"
 

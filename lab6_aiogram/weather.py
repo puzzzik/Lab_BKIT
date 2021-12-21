@@ -1,5 +1,17 @@
 import requests
+
 app_id = "0d6eb8362cfe0622d5bc1b40279fb037"
+
+
+def test(name):
+    try:
+        res = requests.get("http://api.openweathermap.org/data/2.5/find",
+                           params={'q': name, 'units': 'metric', 'lang': 'ru', 'APPID': app_id})
+        data = res.json()['list'][0]
+    except:
+        return False
+    return True if data is not None else False
+
 
 class Weather:
     def __init__(self):
@@ -37,7 +49,8 @@ class Weather:
             temp_min = "Минимальная температура:" + ' ' + str(data['main']['temp_min'])
             temp_max = "Максимальная температура:" + ' ' + str(data['main']['temp_max'])
             feels_like = "Ощущается как:" + ' ' + str(data['main']['feels_like'])
-            response = ''.join([city+'\n', cond+'\n', temp+'\n', feels_like+'\n', temp_min+'\n', temp_max+'\n', ])
+            response = ''.join(
+                [city + '\n', cond + '\n', temp + '\n', feels_like + '\n', temp_min + '\n', temp_max + '\n', ])
             return response
         except Exception as e:
             print("Exception (weather):", e)
@@ -46,6 +59,7 @@ class Weather:
 
 if __name__ == '__main__':
     w = Weather()
-    w.city = 'Москва'
-    w.country = 'Россия'
-    w.get_weather()
+    w.city = 'ASF'
+    # w.country = 'Россия'
+    # w.get_weather()
+    print(w.test())
