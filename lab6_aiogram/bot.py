@@ -1,4 +1,4 @@
-from weather import Weather, test
+from weather import test, Weather
 import logging
 from aiogram import Bot, Dispatcher, executor, types
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
@@ -31,7 +31,7 @@ async def start(message: types.Message):
 
 
 @dp.message_handler(state='*', commands='reset')
-@dp.message_handler(Text(equals='cancel', ignore_case=True), state='*')
+@dp.message_handler(Text(equals='reset', ignore_case=True), state='*')
 async def cancel_handler(message: types.Message, state: FSMContext):
     """
     Allow user to cancel any action

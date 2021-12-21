@@ -3,7 +3,7 @@ import requests
 app_id = "0d6eb8362cfe0622d5bc1b40279fb037"
 
 
-def test(name):
+def test(name) -> bool:
     try:
         res = requests.get("http://api.openweathermap.org/data/2.5/find",
                            params={'q': name, 'units': 'metric', 'lang': 'ru', 'APPID': app_id})
