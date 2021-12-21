@@ -3,7 +3,7 @@ import requests
 app_id = "0d6eb8362cfe0622d5bc1b40279fb037"
 
 
-def test(name) -> bool:
+def resp_test(name) -> bool:
     try:
         res = requests.get("http://api.openweathermap.org/data/2.5/find",
                            params={'q': name, 'units': 'metric', 'lang': 'ru', 'APPID': app_id})
@@ -42,7 +42,7 @@ class Weather:
             res = requests.get("http://api.openweathermap.org/data/2.5/find",
                                params={'q': place, 'units': 'metric', 'lang': 'ru', 'APPID': app_id})
             data = res.json()['list'][0]
-
+            print(data)
             city = data['name'] + ' ' + str(data['sys']['country'])
             cond = "Условия:" + ' ' + data['weather'][0]['description']
             temp = "Температура:" + ' ' + str(data['main']['temp'])
@@ -59,7 +59,6 @@ class Weather:
 
 if __name__ == '__main__':
     w = Weather()
-    w.city = 'ASF'
-    # w.country = 'Россия'
-    # w.get_weather()
-    print(w.test())
+    w.city = 'Тула'
+    w.country = 'Россия'
+    w.get_weather()

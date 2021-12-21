@@ -1,4 +1,4 @@
-from weather import test, Weather
+from weather import resp_test, Weather
 import logging
 from aiogram import Bot, Dispatcher, executor, types
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
@@ -49,7 +49,7 @@ async def cancel_handler(message: types.Message, state: FSMContext):
     await Form.country.set()
 
 
-@dp.message_handler(lambda message: not test(message.text), state=Form.country)
+@dp.message_handler(lambda message: not resp_test(message.text), state=Form.country)
 async def process_country_invalid(message: types.Message):
     """
     If country is invalid
@@ -65,7 +65,7 @@ async def entering_country(message: types.Message, state: FSMContext):
     await message.answer("В каком городе хотите узнать погоду?")
 
 
-@dp.message_handler(lambda message: not test(message.text), state=Form.city)
+@dp.message_handler(lambda message: not resp_test(message.text), state=Form.city)
 async def process_city_invalid(message: types.Message):
     """
     If city is invalid
@@ -73,7 +73,7 @@ async def process_city_invalid(message: types.Message):
     return await message.reply('Такого города не существует\nПопробуйте ввести название города заново')
 
 
-@dp.message_handler(lambda message: test(message.text), state=Form.city)
+@dp.message_handler(lambda message: resp_test(message.text), state=Form.city)
 async def entering_city(message: types.Message, state: FSMContext):
     await Form.next()
     async with state.proxy() as data:
