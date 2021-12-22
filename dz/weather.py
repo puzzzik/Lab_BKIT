@@ -1,12 +1,14 @@
-import requests
+# -*- coding: utf-8 -*-
+
+from requests import get
 
 app_id = "0d6eb8362cfe0622d5bc1b40279fb037"
 
 
-def resp_test(name) -> bool:
+def resp_test(name):
     try:
-        res = requests.get("http://api.openweathermap.org/data/2.5/find",
-                           params={'q': name, 'units': 'metric', 'lang': 'ru', 'APPID': app_id})
+        res = get("http://api.openweathermap.org/data/2.5/find",
+                  params={'q': name, 'units': 'metric', 'lang': 'ru', 'APPID': app_id})
         data = res.json()['list'][0]
     except:
         return False
@@ -39,8 +41,8 @@ class Weather:
         place = ''.join([self.city, ', ', self.country])
 
         try:
-            res = requests.get("http://api.openweathermap.org/data/2.5/find",
-                               params={'q': place, 'units': 'metric', 'lang': 'ru', 'APPID': app_id})
+            res = get("http://api.openweathermap.org/data/2.5/find",
+                      params={'q': place, 'units': 'metric', 'lang': 'ru', 'APPID': app_id})
             data = res.json()['list'][0]
             city = data['name'] + ' ' + str(data['sys']['country'])
             cond = "Условия:" + ' ' + data['weather'][0]['description']
