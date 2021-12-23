@@ -1,11 +1,14 @@
-from abc import ABC, abstractmethod
+# -*- coding: utf-8 -*-
+
+import abc
 
 
-class Figure(ABC):
+class Figure(abc.ABC):
     """
     Абстрактный класс «Геометрическая фигура»
     """
-    @abstractmethod
+
+    @abc.abstractmethod
     def square(self):
         """
         содержит виртуальный метод для вычисления площади фигуры.

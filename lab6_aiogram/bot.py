@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from weather import resp_test, Weather
 import logging
 from aiogram import Bot, Dispatcher, executor, types
@@ -13,7 +15,7 @@ class Form(StatesGroup):
     send_weather = State()
 
 
-TOKEN = "5031931528:AAHssOqk4aGjf2Nwj3J8owc8JoVz6ngpRYY"
+TOKEN = "5031931528:AAGoT00jZEk50kcHyWJSyFrHFLrxfCFGrPs"
 
 storage = MemoryStorage()
 # Объект бота
@@ -22,7 +24,6 @@ bot = Bot(token=TOKEN)
 dp = Dispatcher(bot, storage=storage)
 # Включаем логирование, чтобы не пропустить важные сообщения
 logging.basicConfig(level=logging.INFO)
-
 
 @dp.message_handler(commands='start')
 async def start(message: types.Message):

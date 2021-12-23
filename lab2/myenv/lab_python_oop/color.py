@@ -1,3 +1,6 @@
+
+# -*- coding: utf-8 -*-
+
 class FigureColor:
     """
     Класс «Цвет фигуры»

@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from lab_python_oop.rectangle import Rectangle
 
 

@@ -14,29 +14,28 @@ def field(items, *args):
                 yield d
 
 
+goods = [
+    {'title': 'Ковер', 'price': 2000, 'color': 'green'},
+    {'title': 'Диван для отдыха', 'price': 5300, 'color': 'black'},
+    {'price': 2000},
+    {'color': 'black'}
+]
+field(goods, 'title')  # 'Ковер', 'Диван для отдыха'
+field(goods, 'title', 'price')  # {'title': 'Ковер', 'price': 2000}, {'title': 'Диван для отдыха', 'price': 5300}
 
-# goods = [
-#     {'title': 'Ковер', 'price': 2000, 'color': 'green'},
-#     {'title': 'Диван для отдыха', 'price': 5300, 'color': 'black'},
-#     {'price': 2000},
-#     {'color': 'black'}
-#]
-# field(goods, 'title')  # 'Ковер', 'Диван для отдыха'
-# field(goods, 'title', 'price')  # {'title': 'Ковер', 'price': 2000}, {'title': 'Диван для отдыха', 'price': 5300}
+
+def main():
+    name = goods
+
+    args = []
+
+    cur = input("Введите названия пункта: ")
+    while cur:
+        args.append(cur)
+        cur = input("Введите названия пункта: ")
+    result = field(name, *args)
+    print(list(result))
 
 
-# def main():
-#     name = goods
-#
-#     args = []
-#
-#     cur = input("Введите названия пункта: ")
-#     while cur:
-#         args.append(cur)
-#         cur = input("Введите названия пункта: ")
-#     result = field(name, *args)
-#     print(list(result))
-#
-#
-# if __name__ == "__main__":
-#     main()
+if __name__ == "__main__":
+    main()
